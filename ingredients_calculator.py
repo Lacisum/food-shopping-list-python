@@ -101,6 +101,8 @@ def get_required_ingredients(l_entered_meals, l_meals_and_ingredients):
     dict_required_ingredients = dict()
     for meal_and_ingredients in l_required_meals_and_ingredients:
         for ingredient in meal_and_ingredients['ingredients']:
+            if not ingredient in dict_required_ingredients:
+                dict_required_ingredients[ingredient] = 0
             dict_required_ingredients[ingredient] += meal_and_ingredients['ingredients'][ingredient]
     return dict_required_ingredients
 
@@ -160,19 +162,12 @@ def main_ingredients():
     integrate_file_data('meals_and_ingredients.txt', l_meals_and_ingredients, dict_units)
     L_MEALS = [l_meals_and_ingredients[i]['meal'] for i in range(len(l_meals_and_ingredients))] # liste des recettes
 
-    # prints pour tester
-    print(l_meals_and_ingredients)
-    print()
-    print(dict_units)
-    print()
-    print(L_MEALS)
-
     presentation(L_MEALS)
     input = meals_input()
     l_entered_meals = get_entered_meals(input, L_MEALS)
     display_entered_meals(l_entered_meals)
     dict_required_ingredients = get_required_ingredients(l_entered_meals, l_meals_and_ingredients)
-    display_required_ingredients(dict_required_ingredients)
+    display_required_ingredients(dict_required_ingredients, dict_units)
 
 
 
