@@ -1,5 +1,6 @@
 # POUR L'AFFICHAGE
 
+from ingredients_computation import get_correct_unit
 
 def presentation(L_MEALS):
     """Imprime la présentation du programme, y compris la liste des plats."""
