@@ -7,17 +7,6 @@ from ingredients_computation import *
 
 
 
-# SAISIE DES RECETTES DESIREES
-
-def meals_input():
-    """Invite l'utilisateurice à saisir un ou des plats."""
-    print('\nSaisis le ou les plat(s) que tu veux faire. Par exemple :\n')
-    print('     "tofu basquaise, patates sautées"\n')
-    res = input()
-    return res
-
-
-
 
 # FONCTION PRINCIPALE
 

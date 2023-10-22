@@ -10,6 +10,14 @@ def presentation(L_MEALS):
         print(f'- {meal}')
 
 
+def meals_input():
+    """Invite l'utilisateurice à saisir un ou des plats."""
+    print('\nSaisis le ou les plat(s) que tu veux faire. Par exemple :\n')
+    print('     "tofu basquaise, patates sautées"\n')
+    res = input()
+    return res
+
+
 def display_entered_meals(l_entered_meals):
     """Affiche les plats saisies par l'utilisateurice."""
     print('\nTu as saisi les plats suivantes :\n')
