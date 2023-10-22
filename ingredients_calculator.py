@@ -1,8 +1,6 @@
 # Ce programme donne les ingrédients requis pour faire les recettes désirées.
 
 from file_parsing import *
-
-from file_parsing import *
 from input_parsing import *
 
 
