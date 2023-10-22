@@ -185,6 +185,8 @@ integrate_file_data('meals_and_ingredients.txt')
 
 L_MEALS = [l_meals_and_ingredients[i]['meal'] for i in range(len(l_meals_and_ingredients))]
 
+from file_parsing import *
+from input_parsing import *
 
 
 
@@ -208,47 +210,6 @@ def meals_input():
     print('     "tofu basquaise, patates sautées"\n')
     res = input()
     return res
-
-
-
-
-# QUELLES RECETTES ONT ETE SAISIES ?
-
-def meal_is_entered(meal, input):
-    """Renvoie True si un plat donné est écrit dans une chaine donnée, False sinon.
-    Exemples :
-    >>> meal_is_entered('patates sautées', 'je veux des patates sautées  ')
-    True
-    """
-    res = False
-    i = 0
-    while i + len(meal) <= len(input) and res == False:
-        if input[i:i+len(meal)] == meal:
-            res = True
-        else:
-            i += 1
-    return res
-
-def get_entered_meals(input):
-    """Renvoie la liste des plats saisis par l'utilisateurice.
-    Exemples :
-    >>> get_entered_meals('salade de patates')
-    ['salade de patates']
-    >>> get_entered_meals('salade de patates et patates sautées u1(ù$')
-    ['salade de patates', 'patates sautées']
-    >>> get_entered_meals('patates sautees')
-    []
-    >>> get_entered_meals('canapé')
-    []
-    """
-    global L_MEALS
-    l_entered_meals = []
-    i = 0
-    while i < len(L_MEALS):
-        if meal_is_entered(L_MEALS[i], input):
-            l_entered_meals.append(L_MEALS[i])
-        i += 1
-    return l_entered_meals
 
 
 
