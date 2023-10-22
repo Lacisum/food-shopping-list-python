@@ -2,17 +2,7 @@
 
 from file_parsing import *
 from input_parsing import *
-
-
-
-# PRESENTATION
-
-def presentation(L_MEALS):
-    """Imprime la présentation du programme, y compris la liste des plats."""
-    print('Ce programme te donne la liste des ingrédients requis pour faire les plats que tu choisis.\n')
-    print('Voici la liste des plats disponibles :\n')
-    for meal in L_MEALS:
-        print(f'- {meal}')
+from display import *
 
 
 
@@ -29,17 +19,7 @@ def meals_input():
 
 
 
-# AFFICHAGE DES RECETTES SAISIES
-
-def display_entered_meals(l_entered_meals):
-    """Affiche les plats saisies par l'utilisateurice."""
-    print('\nTu as saisi les plats suivantes :\n')
-    for entered_meal in l_entered_meals:
-        print(f'- {entered_meal}')
-    return None
-
-
-
+# QUELLES SONT LES RECETTES SAISIES ET LEURS INGREDIENTS RESPECTIFS ?
 
 def get_required_meals_and_ingredients(l_entered_meals, l_meals_and_ingredients):
     """Renvoie une liste de dictionnaires associant un plat saisi à ses ingrédients."""
@@ -69,22 +49,13 @@ def get_required_ingredients(l_entered_meals, l_meals_and_ingredients):
 
 
 
-# AFFICHAGE DES INGREDIENTS REQUIS, QUANTITES COMPRISES
+# QUELLE SONT LES UNITES DES QUANTITES DES INGREDIENTS REQUIS ?
 
 def get_correct_unit(ingredient, dict_units):
     for unit in dict_units:
         if ingredient in dict_units[unit]:
             correct_unit = unit
     return correct_unit
-
-def display_required_ingredients(dict_required_ingredients, dict_units):
-    """Affiche les ingrédients requis, quantités comprises."""
-    print('\nVoici les ingrédients requis :\n')
-    for ingredient in dict_required_ingredients:
-        quantity = dict_required_ingredients[ingredient]
-        unit = get_correct_unit(ingredient, dict_units)
-        print(f'- {ingredient}  {round(quantity, 3)}{unit}')
-    return None
 
 
 
