@@ -10,14 +10,14 @@ from ingredients_computation import *
 
 # FONCTION PRINCIPALE
 
-def main_ingredients():
+def main():
 
     # Liste de dictionnaires associant un plat à ses ingrédients
-
+    l_meals_and_ingredients = list()
     # Cette liste sera une liste de dictionnaire à deux clés.
     # Les deux clés sont le nom d'un plat (string) et les ingrédients (dict).
-    # La deuxième clé, un dictionnaire, associera chaque ingrédient du plat à la quantité de l'ingrédient (à un nombre).
-
+    # La deuxième clé, un dictionnaire, associera chaque ingrédient du plat à la quantité de l'ingrédient (un nombre).
+    # Les unités des quantités des ingrédients seront quant à elles stockées dans le dictionnaire dict_units.
     # Exemple :
     #            [{'meal': 'riz cantonnais', 
     #              'ingredients': {'riz': '0.14',
@@ -29,14 +29,12 @@ def main_ingredients():
     #                              'tofu': '0.2'}
     #             }
     #            ]
-    l_meals_and_ingredients = list()
 
     # Dictionnaire associant chaque nom d'unité à une liste d'ingrédients
-
+    dict_units = dict()
     # Exemple :
     #           {'kg': ['patates', 'tofu'], 
     #            'c à s': ['huile', 'vinaigre']}
-    dict_units = dict()
 
     integrate_file_data('meals_and_ingredients.txt', l_meals_and_ingredients, dict_units)
     L_MEALS = [l_meals_and_ingredients[i]['meal'] for i in range(len(l_meals_and_ingredients))] # liste des recettes
@@ -54,4 +52,4 @@ def main_ingredients():
 if __name__ == '__main__':
     # import doctest
     # doctest.testmod(verbose=True)
-    main_ingredients()
+    main()
