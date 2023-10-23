@@ -9,7 +9,7 @@ def meal_is_entered(meal_name, input):
     >>> meal_is_entered('patates sautées', 'je veux des patates sautées  ')
     True
     """
-    return re.search(meal_name, input)
+    return bool(re.search(meal_name, input))
 
 def get_entered_meals(input, l_meals_and_ingredients):
     """Renvoie la liste des plats saisis par l'utilisateurice.
@@ -32,3 +32,7 @@ def get_entered_meals(input, l_meals_and_ingredients):
         if meal_is_entered(meal['meal name'], input):
             l_entered_meals.append(meal['meal name'])
     return l_entered_meals
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod(verbose=True)
