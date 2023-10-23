@@ -2,12 +2,12 @@
 
 from ingredients_computation import get_correct_unit
 
-def presentation(L_MEALS):
+def presentation(l_meals_and_ingredients):
     """Imprime la présentation du programme, y compris la liste des plats."""
     print('Ce programme te donne la liste des ingrédients requis pour faire les plats que tu choisis.\n')
     print('Voici la liste des plats disponibles :\n')
-    for meal in L_MEALS:
-        print(f'- {meal}')
+    for meal in l_meals_and_ingredients:
+        print(f"- {meal['meal name']}")
 
 
 def meals_input():

@@ -11,20 +11,24 @@ def meal_is_entered(meal_name, input):
     """
     return re.search(meal_name, input)
 
-def get_entered_meals(input, L_MEALS):
+def get_entered_meals(input, l_meals_and_ingredients):
     """Renvoie la liste des plats saisis par l'utilisateurice.
     Exemples :
-    >>> get_entered_meals('salade de patates', ['salade de patates', 'patates sautées'])
+    >>> get_entered_meals('salade de patates', [{'meal name': 'salade de patates', 'ingredients': dict()}, \
+                                                {'meal name': 'patates sautées', 'ingredients': dict()}])
     ['salade de patates']
-    >>> get_entered_meals('salade de patates et patates sautées u1(ù$', ['salade de patates', 'patates sautées'])
+    >>> get_entered_meals('salade de patates et patates sautées u1(ù$', [{'meal name': 'salade de patates', 'ingredients': dict()}, \
+                                                                         {'meal name': 'patates sautées', 'ingredients': dict()}])
     ['salade de patates', 'patates sautées']
-    >>> get_entered_meals('patates sautees', ['salade de patates', 'patates sautées'])
+    >>> get_entered_meals('patates sautees', [{'meal name': 'salade de patates', 'ingredients': dict()}, \
+                                              {'meal name': 'patates sautées', 'ingredients': dict()}])
     []
-    >>> get_entered_meals('canapé', ['salade de patates', 'patates sautées'])
+    >>> get_entered_meals('canapé', [{'meal name': 'salade de patates', 'ingredients': dict()}, \
+                                     {'meal name': 'patates sautées', 'ingredients': dict()}])
     []
     """
     l_entered_meals = []
-    for meal_name in L_MEALS:
-        if meal_is_entered(meal_name, input):
-            l_entered_meals.append(meal_name)
+    for meal in l_meals_and_ingredients:
+        if meal_is_entered(meal['meal name'], input):
+            l_entered_meals.append(meal['meal name'])
     return l_entered_meals
