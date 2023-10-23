@@ -8,6 +8,8 @@ def meal_is_entered(meal_name, input):
     Exemples :
     >>> meal_is_entered('patates sautées', 'je veux des patates sautées  ')
     True
+    >>> meal_is_entered('patates sautées', 'patates sautees')
+    False
     """
     return bool(re.search(meal_name, input))
 
@@ -32,6 +34,7 @@ def get_entered_meals(input, l_meals_and_ingredients):
         if meal_is_entered(meal['meal name'], input):
             l_entered_meals.append(meal['meal name'])
     return l_entered_meals
+
 
 if __name__ == '__main__':
     import doctest
