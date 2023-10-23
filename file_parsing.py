@@ -76,7 +76,7 @@ def treat_meal_line(line, l_meals_and_ingredients, dict_ingredients, meal_name):
 
 
 def register_meal(l_meals_and_ingredients, dict_ingredients, meal_name):
-    l_meals_and_ingredients.append({'meal': meal_name, 'ingredients': dict_ingredients})
+    l_meals_and_ingredients.append({'meal name': meal_name, 'ingredients': dict_ingredients})
 
 
 def treat_ingredient_line(line, dict_units, dict_ingredients):

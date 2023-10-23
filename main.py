@@ -37,7 +37,7 @@ def main():
     #            'c à s': ['huile', 'vinaigre']}
 
     integrate_file_data('meals_and_ingredients.txt', l_meals_and_ingredients, dict_units)
-    L_MEALS = [l_meals_and_ingredients[i]['meal'] for i in range(len(l_meals_and_ingredients))] # liste des recettes
+    L_MEALS = [l_meals_and_ingredients[i]['meal name'] for i in range(len(l_meals_and_ingredients))] # liste des recettes
 
     presentation(L_MEALS)
     input = meals_input()

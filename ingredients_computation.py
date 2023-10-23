@@ -9,7 +9,7 @@ def get_required_meals_and_ingredients(l_entered_meals, l_meals_and_ingredients)
     """Renvoie une liste de dictionnaires associant un plat saisi à ses ingrédients."""
     l_required_meals_and_ingredients = []
     for meal_and_ingredients in l_meals_and_ingredients:
-        if meal_and_ingredients['meal'] in l_entered_meals:
+        if meal_and_ingredients['meal name'] in l_entered_meals:
             l_required_meals_and_ingredients.append(meal_and_ingredients)
     return l_required_meals_and_ingredients
 
