@@ -1,14 +1,9 @@
-# Ce programme donne les ingrédients requis pour faire les recettes désirées.
-
-from file_parsing import *
-from input_parsing import *
-from display import *
-from ingredients_computation import *
+# CE PROGRAMME DONNE LA LISTE DES INGREDIENTS REQUIS (ET LEURS QUANTITES)
+# POUR FAIRE LES RECETTES DESIRES
 
 
+from secondary_functions import *
 
-
-# FONCTION PRINCIPALE
 
 def main():
 
@@ -37,7 +32,6 @@ def main():
     #            'c à s': ['huile', 'vinaigre']}
 
     integrate_file_data('meals_and_ingredients.txt', l_meals_and_ingredients, dict_units)
-
     presentation(l_meals_and_ingredients)
     input = meals_input()
     l_entered_meals = get_entered_meals(input, l_meals_and_ingredients)
@@ -49,6 +43,4 @@ def main():
 
 
 if __name__ == '__main__':
-    # import doctest
-    # doctest.testmod(verbose=True)
     main()

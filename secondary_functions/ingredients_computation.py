@@ -1,9 +1,8 @@
 # POUR CALCULER LES INGREDIENTS REQUIS
 
 
+# Quelles sont les recettes saisies et leurs ingrédients respectifs ?
 
-
-# QUELLES SONT LES RECETTES SAISIES ET LEURS INGREDIENTS RESPECTIFS ?
 
 def get_required_meals_and_ingredients(l_entered_meals, l_meals_and_ingredients):
     """Renvoie une liste de dictionnaires associant un plat saisi à ses ingrédients."""
@@ -14,7 +13,10 @@ def get_required_meals_and_ingredients(l_entered_meals, l_meals_and_ingredients)
     return l_required_meals_and_ingredients
 
 
-# QUELS INGREDIENTS SONT REQUIS ET EN QUELLE QUANTITE, TOUTES RECETTES CONFONDUES ?
+
+
+# Quels ingrédients sont requis et en quelle quantité, toute recette confondue ?
+
 
 def get_required_ingredients(l_entered_meals, l_meals_and_ingredients):
     """Renvoie un dictionnaire associant chaque ingrédient à sa quantité requise
@@ -29,7 +31,10 @@ def get_required_ingredients(l_entered_meals, l_meals_and_ingredients):
     return dict_required_ingredients
 
 
-# QUELLE SONT LES UNITES DES QUANTITES DES INGREDIENTS REQUIS ?
+
+
+# Quelles sont les unités des quantités des ingrédients requis ?
+
 
 def get_correct_unit(ingredient, dict_units):
     for unit in dict_units:

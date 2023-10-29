@@ -4,8 +4,6 @@
 import re
 
 
-
-
 # Pour vérifier si une ligne contient le nom d'un plat (ligne-plat) ou bien un ingrédient et sa quantité (ligne-ingrédient)
 
 
