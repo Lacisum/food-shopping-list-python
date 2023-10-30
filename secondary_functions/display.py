@@ -1,5 +1,6 @@
 # POUR L'AFFICHAGE
 
+import re
 
 from .ingredients_computation import get_correct_unit
 
@@ -34,6 +35,9 @@ def display_required_ingredients(dict_required_ingredients, dict_units):
     """Affiche les ingrédients requis, quantités comprises."""
     print('Voici tous les ingrédients requis :')
     for ingredient in dict_required_ingredients:
-        quantity = dict_required_ingredients[ingredient]
+        if dict_required_ingredients[ingredient].is_integer():
+            quantity = int(dict_required_ingredients[ingredient])
+        else:
+            quantity = round(dict_required_ingredients[ingredient], 3)
         unit = get_correct_unit(ingredient, dict_units)
-        print('- {:<20} {:<5} {}'.format(ingredient, round(quantity, 3), unit))
+        print('- {:<20} {:<5} {}'.format(ingredient, quantity, unit))
