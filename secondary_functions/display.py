@@ -34,10 +34,11 @@ def display_entered_meals(l_entered_meals):
 def display_required_ingredients(dict_required_ingredients, dict_units):
     """Affiche les ingrédients requis, quantités comprises."""
     print('Voici tous les ingrédients requis :')
-    for ingredient in dict_required_ingredients:
-        if dict_required_ingredients[ingredient].is_integer():
-            quantity = int(dict_required_ingredients[ingredient])
+    max_ingr_name_length = max(map(lambda ingr_name : len(ingr_name), dict_required_ingredients))
+    for ingr_name in dict_required_ingredients:
+        if dict_required_ingredients[ingr_name].is_integer():
+            quantity = int(dict_required_ingredients[ingr_name])
         else:
-            quantity = round(dict_required_ingredients[ingredient], 3)
-        unit = get_correct_unit(ingredient, dict_units)
-        print('- {:<20} {:<5} {}'.format(ingredient, quantity, unit))
+            quantity = round(dict_required_ingredients[ingr_name], 3)
+        unit = get_correct_unit(ingr_name, dict_units)
+        print('- {}{} {}'.format(ingr_name.ljust(max_ingr_name_length+4, '.'), quantity, unit))
