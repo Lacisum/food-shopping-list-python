@@ -1,11 +1,18 @@
 # CE PROGRAMME DONNE LA LISTE DES INGREDIENTS REQUIS (ET LEURS QUANTITES)
 # POUR FAIRE LES RECETTES DESIRES
 
+import sys
 
 from secondary_functions import *
 
 
-def main():
+def main(argv):
+
+
+    if len(argv) != 2:
+        print('Usage: python3 main.py <file_name>')
+        exit(1)
+
 
     # Liste de dictionnaires associant un plat à ses ingrédients
     l_meals_and_ingredients = list()
@@ -25,13 +32,15 @@ def main():
     #             }
     #            ]
 
+
     # Dictionnaire associant chaque nom d'unité à une liste d'ingrédients
     dict_units = dict()
     # Exemple :
     #           {'kg': ['patates', 'tofu'], 
     #            'c à s': ['huile', 'vinaigre']}
 
-    integrate_file_data('meals_and_ingredients.txt', l_meals_and_ingredients, dict_units)
+
+    integrate_file_data(argv[1], l_meals_and_ingredients, dict_units)
     presentation(l_meals_and_ingredients)
     input = meals_input()
     l_entered_meals = get_entered_meals(input, l_meals_and_ingredients)
@@ -43,4 +52,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)
