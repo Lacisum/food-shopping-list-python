@@ -27,5 +27,5 @@ Throughout the file, make sure that:
 Here is the command needed to run the program with the default file (you can replace it with any file):
 
 ```
-$ python3 main.py meals_and_ingredients.txt
+$ python3 src/main.py meals_and_ingredients.txt
 ```
