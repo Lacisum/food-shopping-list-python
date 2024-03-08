@@ -1,11 +1,22 @@
 # Ingredients calculator
 
+
+## Contents
+
+- [Presentation](#Presentation)
+- [Meals file](#MealsFile)
+- [Run the program](#RunTheProgram)
+
+
+<a name="Presentation"></a>
 ## Presentation
 
 This program automates the process of making a food shopping list. Do you know in advance what meals you want to cook in this week? Then just feed the program with the names of those meals. You will be given the list of ingredients (with their quantities) you need to buy.  
   
 For now, the program output is in french, meaning the instructions which the program displays while running are given in french. However, if the meals file is written in english, the meals and the list of needed ingredients will of course be displayed in english.  
 
+
+<a name="MealsFile"></a>
 ## Meals file
 
 The command needed to run the program takes one argument, which is the file that contains all meals the program will know the ingredients of. Any text file should work.  
@@ -22,10 +33,12 @@ Throughout the file, make sure that:
     - example 2: writing 'teaspoon' then 'teaspoons' (with an 's') won't work
 - decimal point quantities are written with a dot (like '0.5') and not a comma ('like '0,5')
 
+
+<a name="RunTheProgram"></a>
 ## Run the program
 
 Here is the command needed to run the program with the default file (you can replace it with any file):
 
-```
+```sh
 $ python3 src/main.py meals_and_ingredients.txt
 ```
