@@ -1,5 +1,5 @@
 - meal: salade de patates
-  ingredients
+  ingredients:
     patates:
       quantity: 1.5
       unit: kg
