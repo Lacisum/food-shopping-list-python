@@ -20,9 +20,17 @@ def print_presentation(meal_names: list) -> None:
 
 
 
-def get_input_from_user() -> str:
-    """Prompts the user to type one or more meals names."""
-    print('Saisis les numéros des repas que tu veux préparer en les séparant par un espace :')
+def get_input_from_user(message: str) -> str:
+    """
+    Prompts the user to type one or more meals names.
+
+    Args:
+        message (str): the message to prompt the user with
+
+    Returns:
+        str: the user input
+    """
+    print(message)
     user_input = input()
     print()
     return user_input
