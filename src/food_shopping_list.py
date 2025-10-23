@@ -2,7 +2,7 @@
 
 import sys
 
-from secondary_functions import *
+from . import *
 
 
 
