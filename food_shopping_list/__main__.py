@@ -1,5 +1,6 @@
 # This program produces a shopping (food) list for the selected meals
 
+from pathlib import Path
 import sys
 
 from . import *
@@ -10,7 +11,7 @@ from . import *
 def main(argv):
 
     if len(argv) != 2:
-        print('Usage: python3 main.py <file_name>')
+        print(f'Usage: python3 -m {__package__} <file_name>')
         exit(1)
 
     content: list = read_file(argv[1])
