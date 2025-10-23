@@ -69,5 +69,5 @@ pip install -r requirements.txt
 To run the program with the default file (you can replace it with any file), type:
 
 ```sh
-python3 src/food_shopping_list.py meals.yaml
+python3 -m food_shopping_list meals.yaml
 ```
