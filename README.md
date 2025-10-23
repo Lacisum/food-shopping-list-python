@@ -9,6 +9,7 @@
   - [Configure the meals file](#configure-the-meals-file)
   - [Requirements](#requirements)
   - [Run the program](#run-the-program)
+  - [Run the tests](#run-the-tests)
 
 
 <a name="Presentation"></a>
@@ -70,4 +71,14 @@ To run the program with the default file (you can replace it with any file), typ
 
 ```sh
 python3 -m food_shopping_list meals.yaml
+```
+
+
+<a name="RunTheTests"></a>
+## Run the tests
+
+To run the tests, type the following command:
+
+```sh
+python -m unittest tests
 ```
