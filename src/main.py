@@ -1,52 +1,40 @@
-# CE PROGRAMME DONNE LA LISTE DES INGREDIENTS REQUIS (ET LEURS QUANTITES)
-# POUR FAIRE LES RECETTES DESIRES
+# This program produces a shopping (food) list for the selected meals
 
 import sys
 
 from secondary_functions import *
 
 
-def main(argv):
 
+
+def main(argv):
 
     if len(argv) != 2:
         print('Usage: python3 main.py <file_name>')
         exit(1)
 
+    content: list = read_file(argv[1])
+    check_content_correctness(content)
+    meals_dicts: list = content
 
-    # Liste de dictionnaires associant un plat à ses ingrédients
-    l_meals_and_ingredients = list()
-    # Cette liste sera une liste de dictionnaire à deux clés.
-    # Les deux clés sont le nom d'un plat (string) et les ingrédients (dict).
-    # La deuxième clé, un dictionnaire, associera chaque ingrédient du plat à la quantité de l'ingrédient (un nombre).
-    # Les unités des quantités des ingrédients seront quant à elles stockées dans le dictionnaire dict_units.
-    # Exemple :
-    #            [{'meal': 'riz cantonnais', 
-    #              'ingredients': {'riz': '0.14',
-    #                              'petit pois': '0.05',
-    #                              'saucisse de soja': '2'}
-    #             },
-    #             {'meal': 'tofu basquaise',
-    #              'ingredients': {'riz': '0.3',
-    #                              'tofu': '0.2'}
-    #             }
-    #            ]
+    meal_names: list[str] = [meal_dict['meal'] for meal_dict in meals_dicts]
 
+    print_presentation(meal_names)
 
-    # Dictionnaire associant chaque nom d'unité à une liste d'ingrédients
-    dict_units = dict()
-    # Exemple :
-    #           {'kg': ['patates', 'tofu'], 
-    #            'c à s': ['huile', 'vinaigre']}
+    user_input = get_input_from_user()
 
+    selected_meals: list[str] = get_selected_meals(user_input, meal_names)
 
-    integrate_file_data(argv[1], l_meals_and_ingredients, dict_units)
-    presentation(l_meals_and_ingredients)
-    input = meals_input()
-    l_entered_meals = get_entered_meals(input, l_meals_and_ingredients)
-    display_entered_meals(l_entered_meals)
-    dict_required_ingredients = get_required_ingredients(l_entered_meals, l_meals_and_ingredients)
-    display_required_ingredients(dict_required_ingredients, dict_units)
+    print_selected_meals(selected_meals)
+
+    selected_meals_dicts = list(filter(
+        lambda meal_element: meal_element['meal'] in selected_meals,
+        meals_dicts
+    ))
+
+    ingredients_totals = get_ingredients_quantities(selected_meals_dicts)
+
+    print_shopping_list(ingredients_totals)
 
 
 
