@@ -11,10 +11,10 @@ def print_presentation(meal_names: list) -> None:
         meal_names (list): the list of meals names
     """
     print()
-    print('Ce programme te donne la liste des ingrédients requis pour réaliser les recettes que tu choisis.\n')
-    print('Voici la liste des recettes disponibles :')
-    for meal in meal_names:
-        print(f"- {meal}")
+    print('Ce programme te donne la liste des ingrédients requis pour réaliser les repas que tu choisis.\n')
+    print('Voici la liste des repas disponibles :')
+    for i in range(len(meal_names)):
+        print(f"{i+1}. {meal_names[i]}")
     print()
 
 
@@ -22,7 +22,7 @@ def print_presentation(meal_names: list) -> None:
 
 def get_input_from_user() -> str:
     """Prompts the user to type one or more meals names."""
-    print('Saisis la/les recette(s) que tu veux réaliser.')
+    print('Saisis les numéros des repas que tu veux préparer en les séparant par un espace :')
     user_input = input()
     print()
     return user_input
@@ -37,7 +37,7 @@ def print_selected_meals(selected_meals: list[str]) -> None:
     Args:
         selected_meals (list[str]): the selected meals    
     """
-    print('Tu as saisi les recettes suivantes :')
+    print('Tu as choisi les repas suivantes :')
     for meal in selected_meals:
         print(f'- {meal}')
     print()

@@ -8,48 +8,41 @@ import re
 
 def get_selected_meals(user_input: str, meal_names: list[str]) -> list[str]:
     """
-    Returns the list of meals typed by the user
+    Returns the list of meals selected by the user
 
     Args:
         user_input (str): the string that the user typed
         meal_names (list[str]): the list of all meals
 
     Returns:
-        list[str]: the list of meals typed by the user
+        list[str]: the list of meals selected by the user
 
     Examples :
-    >>> get_entered_meals('salade de patates', ['salade de patates', 'patates sautées'])
+    >>> get_selected_meals('1', ['salade de patates', 'patates sautées'])
     ['salade de patates']
-    >>> get_entered_meals('salade de patates blablabla patates sautées', ['salade de patates', 'patates sautées'])
+    >>> get_selected_meals('2', ['salade de patates', 'patates sautées'])
+    ['patates sautées']
+    >>> get_selected_meals('1 2', ['salade de patates', 'patates sautées'])
     ['salade de patates', 'patates sautées']
-    >>> get_entered_meals('patates sautees', ['salade de patates', 'patates sautées'])
+    >>> get_selected_meals('', ['salade de patates', 'patates sautées'])
     []
-    >>> get_entered_meals('canapé', ['salade de patates', 'patates sautées'])
+    >>> get_selected_meals('Lorem ipsum', ['salade de patates', 'patates sautées'])
     []
     """
-    return [meal for meal in meal_names if _meal_is_entered(user_input, meal)]
-
-
-
-
-def _meal_is_entered(user_input: str, meal_name: str) -> bool:
-    """
-    Checks if the given meal name is present in the given input.
-
-    Args:
-        input (str): the input of the user
-        meal_name (str): the name of a meal
-
-    Returns:
-        bool: True if the given meal name is present in the given input, else False
-
-    Examples :
-    >>> meal_is_entered('patates sautées', 'je veux des patates sautées  ')
-    True
-    >>> meal_is_entered('patates sautées', 'patates sautees')
-    False
-    """
-    return bool(re.search(meal_name, user_input))
+    selected_meals = []
+    if re.fullmatch(r'( *(\d+) *)+', user_input):
+        the_numbers = re.findall(r'\d+', user_input)
+        # remove duplicates
+        the_numbers = set(the_numbers)
+        # convert from strings to ints
+        the_numbers = list(map(lambda n: int(n), the_numbers))
+        # sort
+        the_numbers.sort()
+        # filter
+        the_numbers = list(filter(lambda n: n > 0 and n < len(meal_names) + 1, the_numbers))
+        for n in the_numbers:
+            selected_meals.append(meal_names[n-1])
+    return selected_meals
 
 
 
