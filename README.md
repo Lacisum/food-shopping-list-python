@@ -3,42 +3,61 @@
 
 ## Contents
 
-- [Presentation](#Presentation)
-- [Meals file](#MealsFile)
-- [Run the program](#RunTheProgram)
+- [Ingredients calculator](#ingredients-calculator)
+  - [Contents](#contents)
+  - [Presentation](#presentation)
+  - [The meals file](#the-meals-file)
+  - [Run the program](#run-the-program)
 
 
 <a name="Presentation"></a>
 ## Presentation
 
-This program automates the process of making a food shopping list. Do you know in advance what meals you want to cook in this week? Then just feed the program with the names of those meals. You will be given the list of ingredients (with their quantities) you need to buy.  
+Do you know in advance what meals you want to cook this week? Then just feed the program with the names of those meals. You will be given the list of ingredients (with their quantities) you need to buy.  
   
-For now, the program output is in french, meaning the instructions which the program displays while running are given in french. However, if the meals file is written in english, the meals and the list of needed ingredients will of course be displayed in english.  
+For now, the instructions that the program displays are given in french. However, if the meals file is written in english, the meals and the list of needed ingredients will of course be displayed in english.  
 
 
-<a name="MealsFile"></a>
-## Meals file
+<a name="TheMealsFile"></a>
+## The meals file
 
-The command needed to run the program takes one argument, which is the file that contains all meals the program will know the ingredients of. Any text file should work.  
-  
-A default file called `meals_and_ingredients.txt` is provided in this repository in order to illustrate the syntax that the program recognizes. The meals it contains can be removed, and new ones can be added. Alternatively, a completely new file can be created. The basic idea is to write the name of the meal followed by the ingredients (with their quantity)  
-    
-Use whatever names for meals, ingredients and units of measure: the program will automatically store them and keep them in memory while the it is running. Also, if some ingredient doesn't need a unit, then don't write any unit (for example "onions (2)").  
-  
+The program takes in argument the name of the file that contains the selectable meals with their ingredients.
+This file must be a YAML file and follow a specific syntax. An example file (`meals_and_ingredients.yaml`) is provided. The syntax is the following :
+
+```yaml
+- meal: the name of a meal
+  ingredients:
+    an ingredient:
+      quantity: 3
+      unit: kg
+    another ingredient:
+      quantity: 1
+      unit: unit
+- meal: the name of another meal
+  ingredients:
+    an ingredient:
+      quantity: 2
+      unit: kg
+    yet another ingredient:
+      quantity: 5
+      unit: pinch
+```
+
+If some ingredient doesn't have a unit, then type `unit` in the `unit` field (as shown in the example above).  
+
 Throughout the file, make sure that:
-- ingredients are always written the exact same way
-    - example: 'potatoe' and 'potatoes' (with an 's') will be considered as two different ingredients
-- quantity for an ingredient is always given in the exact same unit
-    - example 1: writing 'kg' then 'g' won't work
-    - example 2: writing 'teaspoon' then 'teaspoons' (with an 's') won't work
-- decimal point quantities are written with a dot (like '0.5') and not a comma ('like '0,5')
+- a given ingredient or unit is always written the exact same way
+    - example 1: `potatoe` & `potatoes` (with an 's') will be considered as two different ingredients
+    - example 2: `teaspoon` & `teaspoons` (with an 's') too
+- the quantity for an ingredient is always given in the exact same unit
+    - example: using `kg` then `g` for `flour` won't work
 
 
 <a name="RunTheProgram"></a>
 ## Run the program
 
-Here is the command needed to run the program with the default file (you can replace it with any file):
+To run the program with the default file (you can replace it with any file), type:
 
 ```sh
-$ python3 src/main.py meals_and_ingredients.txt
+python3 src/main.py meals_and_ingredients.yaml
 ```
