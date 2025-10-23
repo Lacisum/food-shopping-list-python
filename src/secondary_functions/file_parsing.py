@@ -9,12 +9,12 @@ import re
 
 def is_meal_line(line):
     """ Vérifie si une ligne contient le nom d'un plat."""
-    return bool(re.match("\s*(.+[^\s])\s*:\s*", line))
+    return bool(re.match(r"\s*(.+[^\s])\s*:\s*", line))
 
 
 def is_ingredient_line(line):
     """ Vérifie si une ligne contient le nom d'un ingredient."""
-    return bool(re.match("\s*-\s*(.+[^\s])\s+\(([0-9]+|[0-9]+.[0-9]+)\s*(.*)\)", line))
+    return bool(re.match(r"\s*-\s*(.+[^\s])\s+\(([0-9]+|[0-9]+.[0-9]+)\s*(.*)\)", line))
 
 
 
@@ -35,7 +35,7 @@ def get_ingr_infos(ingr_line):
     'kg'
     """
     ingr_infos = dict()
-    match = re.search("\s*-\s*(.+[^\s])\s+\(([0-9]+.[0-9]+|[0-9]+)\s*(.*)\)", ingr_line)
+    match = re.search(r"\s*-\s*(.+[^\s])\s+\(([0-9]+.[0-9]+|[0-9]+)\s*(.*)\)", ingr_line)
     ingr_infos["name"] = match.group(1)
     ingr_infos["quantity"] = match.group(2)
     ingr_infos["unit"] = match.group(3) if match != None else None
@@ -48,7 +48,7 @@ def get_meal_name(meal_line):
     >>> get_meal_name(' tofu basquaise : ')
     'tofu basquaise'
     """
-    match = re.search("\s*(.+[^\s])\s*:\s*", meal_line)
+    match = re.search(r"\s*(.+[^\s])\s*:\s*", meal_line)
     return match.group(1)
 
 
