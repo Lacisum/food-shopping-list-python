@@ -1,0 +1,104 @@
+- meal: salade de patates
+  ingredients
+    patates:
+      quantity: 1.5
+      unit: kg
+    salade:
+      quantity: 0.1
+      unit: kg
+    échalotte:
+      quantity: 1
+      unit: unit
+    huile:
+      quantity: 2
+      unit: c à s
+    vinaigre:
+      quantity: 1
+      unit: c à s
+    sel:
+      quantity: 1
+      unit: pincée
+    poivre:
+      quantity: 4
+      unit: pincée
+
+- meal: patates sautées
+  ingredients:
+    patates:
+      quantity: 1.5
+      unit: kg
+    salade:
+      quantity: 0.1
+      unit: kg
+    tofu:
+      quantity: 0.2
+      unit: kg
+    échalotte:
+      quantity: 1
+      unit: unit
+    huile:
+      quantity: 8
+      unit: c à s
+    vinaigre:
+      quantity: 1
+      unit: c à s
+    sel:
+      quantity: 2
+      unit: pincée
+    poivre:
+      quantity: 4
+      unit: pincée
+
+- meal: riz cantonnais
+  ingredients:
+    riz:
+      quantity: 0.14
+      unit: kg
+    petits pois:
+      quantity: 0.05
+      unit: kg
+    saucisse de soja:
+      quantity: 2
+      unit: unit
+    huile:
+      quantity: 2
+      unit: c à s
+    sel:
+      quantity: 1
+      unit: pincée
+
+- meal: tofu basquaise
+  ingredients:
+    tofu:
+      quantity: 0.1
+      unit: kg
+    riz:
+      quantity: 0.1
+      unit: kg
+    tomates:
+      quantity: 0.15
+      unit: kg
+    ognon :
+      quantity: 1
+      unit: unit
+    gousse d'ail:
+      quantity: 1
+      unit: unit
+    poivron:
+      quantity: 1
+      unit: unit
+    huile:
+      quantity: 4
+      unit: c à s
+    sel:
+      quantity: 1
+      unit: pincée
+    poivre:
+      quantity: 1
+      unit: pincée
+    paprika moulu:
+      quantity: 3
+      unit: pincée
+    piment moulu:
+      quantity: 3
+      unit: pincée
