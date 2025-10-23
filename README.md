@@ -6,7 +6,8 @@
 - [Ingredients calculator](#ingredients-calculator)
   - [Contents](#contents)
   - [Presentation](#presentation)
-  - [The meals file](#the-meals-file)
+  - [Configure the meals file](#configure-the-meals-file)
+  - [Requirements](#requirements)
   - [Run the program](#run-the-program)
 
 
@@ -18,8 +19,8 @@ Do you know in advance what meals you want to cook this week? Then just feed the
 For now, the instructions that the program displays are given in french. However, if the meals file is written in english, the meals and the list of needed ingredients will of course be displayed in english.  
 
 
-<a name="TheMealsFile"></a>
-## The meals file
+<a name="ConfigureTheMealsFile"></a>
+## Configure the meals file
 
 The program takes in argument the name of the file that contains the selectable meals with their ingredients.
 This file must be a YAML file and follow a specific syntax. An example file (`meals_and_ingredients.yaml`) is provided. The syntax is the following :
@@ -52,6 +53,15 @@ Throughout the file, make sure that:
 - the quantity for an ingredient is always given in the exact same unit
     - example: using `kg` then `g` for `flour` won't work
 
+
+<a name="Requirements"></a>
+## Requirements
+
+Install the requirements:
+
+```sh
+pip install -r requirements.txt
+```
 
 <a name="RunTheProgram"></a>
 ## Run the program
