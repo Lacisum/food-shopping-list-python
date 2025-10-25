@@ -1,11 +1,26 @@
 # For displaying
 
+import sys
+
 
 
 
 def print_usage() -> None:
     """Prints the usage of the program."""
     print(f'Usage: python3 -m {__package__} <file_name>')
+
+
+
+
+def print_meals_file_error(file_name: str, exception: AssertionError) -> None:
+    """
+    Prints an error that's in the meals file.
+
+    Args:
+        file_name (str): the name of the meals file
+        exception (str): the raised AssertionError
+    """
+    print(f"Error in {file_name}: {exception}", file=sys.stderr)
 
 
 

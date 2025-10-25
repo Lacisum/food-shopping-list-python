@@ -14,8 +14,16 @@ def main(argv):
         print_usage()
         exit(1)
 
-    content: list = read_file(argv[1])
-    check_content_correctness(content)
+    file_name = argv[1]
+
+    content: list = read_file(file_name)
+
+    try:
+        check_content_correctness(content)
+    except AssertionError as e:
+        print_meals_file_error(file_name, e)
+        exit(1)
+
     meals_dicts: list = content
 
     meal_names: list[str] = [meal_dict['meal'] for meal_dict in meals_dicts]
