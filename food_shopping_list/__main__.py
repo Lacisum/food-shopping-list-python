@@ -1,6 +1,6 @@
 # This program produces a shopping (food) list for the selected meals
 
-from pathlib import Path
+
 import sys
 
 from . import *
@@ -20,7 +20,7 @@ def main(argv):
 
     meal_names: list[str] = [meal_dict['meal'] for meal_dict in meals_dicts]
 
-    print_presentation(meal_names)
+    print_available_meals(meal_names)
 
     prompt_user_input()
     user_input = input()

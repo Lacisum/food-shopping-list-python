@@ -10,9 +10,9 @@ def print_usage() -> None:
 
 
 
-def print_presentation(meal_names: list) -> None:
+def print_available_meals(meal_names: list) -> None:
     """
-    Prints the presentation of the program, including the list of meals.
+    Prints the list of available meals.
 
     Args:
         meal_names (list): the list of meals names
