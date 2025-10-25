@@ -22,17 +22,17 @@ def main(argv):
 
     print_presentation(meal_names)
 
-    user_input = get_input_from_user('Saisis les numéros des repas que tu veux préparer en les séparant par un espace :')
+    user_input = get_input_from_user('Enter the numbers of the meals you want to make, separating them with a space:')
     input_is_correct = False
     while not input_is_correct:
         try:
             selected_meals: list[str] = get_selected_meals(user_input, meal_names)
             input_is_correct = True
         except InvalidInputError as e:
-            user_input = get_input_from_user(f"{e.message}\nMerci d'essayer à nouveau:")
+            user_input = get_input_from_user(f"{e.message}\nPlease try again:")
 
     if not selected_meals:
-        print("Tu n'as choisi aucun repas.")
+        print("You didn't choose any meal.")
         return
 
     print_selected_meals(selected_meals)

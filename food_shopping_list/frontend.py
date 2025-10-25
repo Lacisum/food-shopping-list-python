@@ -10,9 +10,7 @@ def print_presentation(meal_names: list) -> None:
     Args:
         meal_names (list): the list of meals names
     """
-    print()
-    print('Ce programme te donne la liste des ingrédients requis pour réaliser les repas que tu choisis.\n')
-    print('Voici la liste des repas disponibles :')
+    print('\nAvailable meals:')
     for i in range(len(meal_names)):
         print(f"{i+1}. {meal_names[i]}")
     print()
@@ -45,7 +43,7 @@ def print_selected_meals(selected_meals: list[str]) -> None:
     Args:
         selected_meals (list[str]): the selected meals    
     """
-    print('Tu as choisi les repas suivantes :')
+    print('You chose the following meals:')
     for meal in selected_meals:
         print(f'- {meal}')
     print()
@@ -61,7 +59,7 @@ def print_shopping_list(ingredients_totals: dict[str, dict]) -> None:
         ingredients_totals (dict[str, dict]): a dictionary that associates each
             needed ingredient to its quantity
     """
-    print('Voici tous les ingrédients requis :')
+    print('Here are the required ingredients:')
     max_ingr_name_length = max(map(
         lambda ingr_name : len(ingr_name),
         ingredients_totals.keys()
