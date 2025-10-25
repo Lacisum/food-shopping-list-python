@@ -1,9 +1,9 @@
-# Ingredients calculator
+# Food shopping list
 
 
 ## Contents
 
-- [Ingredients calculator](#ingredients-calculator)
+- [Food shopping list](#food-shopping-list)
   - [Contents](#contents)
   - [Presentation](#presentation)
   - [Configure the meals file](#configure-the-meals-file)
