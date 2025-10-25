@@ -40,18 +40,18 @@ def check_content_correctness(content: list) -> None:
     # check the structure
     ingredients_quantities: dict[str, list] = dict()
     for meal_dict in content:
-        assert isinstance(meal_dict, dict)
-        assert "meal" in meal_dict
-        assert "ingredients" in meal_dict
-        assert isinstance(meal_dict['ingredients'], dict)
+        assert isinstance(meal_dict, dict), "some element of the list is not a dictionary"
+        assert "meal" in meal_dict, "some meal's dictionary key 'meal' missing"
+        assert "ingredients" in meal_dict, f"{meal_dict['meal']}'s dictionary key 'ingredients' is missing"
+        assert isinstance(meal_dict['ingredients'], dict), f"{meal_dict['meal']}'s dictionary key 'ingredients' is not mapped to a dictionary"
         for ingredient, quantity in meal_dict['ingredients'].items():
-            assert isinstance(quantity, dict)
-            assert "quantity" in quantity
-            assert "unit" in quantity
+            assert isinstance(quantity, dict), f"{ingredient}'s value in meal '{meal_dict['meal']}' is not a dictionary"
+            assert "quantity" in quantity, f"{ingredient}'s key 'quantity' in meal '{meal_dict['meal']}' is missing"
+            assert "unit" in quantity, f"{ingredient}'s key 'unit' in meal '{meal_dict['meal']}' is missing"
             if ingredient not in ingredients_quantities:
                 ingredients_quantities[ingredient] = []
             ingredients_quantities[ingredient].append(quantity)
 
     # check that the quantities of a single ingredient all use the same unit
-    for quantities in ingredients_quantities.values():
-        assert len(set(quantity['unit'] for quantity in quantities)) == 1
+    for ingredient, quantities in ingredients_quantities.items():
+        assert len(set(quantity['unit'] for quantity in quantities)) == 1, f"ingredient '{ingredient}' uses more than one unit"
