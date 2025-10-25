@@ -3,6 +3,13 @@
 
 
 
+def print_usage() -> None:
+    """Prints the usage of the program."""
+    print(f'Usage: python3 -m {__package__} <file_name>')
+
+
+
+
 def print_presentation(meal_names: list) -> None:
     """
     Prints the presentation of the program, including the list of meals.
@@ -18,20 +25,30 @@ def print_presentation(meal_names: list) -> None:
 
 
 
-def get_input_from_user(message: str) -> str:
+def prompt_user_input() -> None:
+    """Prompts the user to type the numbers of the meals they want to prepare."""
+    print('Enter the numbers of the meals you want to make, separating them with a space:')
+
+
+
+
+def prompt_user_input_again(exception_message: str) -> None:
     """
-    Prompts the user to type one or more meals names.
+    Prompts the user to type the numbers of the meals they want to prepare (again).
+    Assumes that the user has already tried to input something before and that their input was incorrect.
 
     Args:
-        message (str): the message to prompt the user with
-
-    Returns:
-        str: the user input
+        exception_message (str): the message of the exception that occured during the previous input trial
     """
-    print(message)
-    user_input = input()
-    print()
-    return user_input
+    print(exception_message)
+    print('Please try again:')
+
+
+
+
+def print_you_didnt_chose_any_meal() -> None:
+    """Prints a message that tells the user they didn't choose any meal."""
+    print("You didn't choose any meal.")
 
 
 

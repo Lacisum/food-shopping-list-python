@@ -11,7 +11,7 @@ from . import *
 def main(argv):
 
     if len(argv) != 2:
-        print(f'Usage: python3 -m {__package__} <file_name>')
+        print_usage()
         exit(1)
 
     content: list = read_file(argv[1])
@@ -22,17 +22,21 @@ def main(argv):
 
     print_presentation(meal_names)
 
-    user_input = get_input_from_user('Enter the numbers of the meals you want to make, separating them with a space:')
+    prompt_user_input()
+    user_input = input()
+    print()
     input_is_correct = False
     while not input_is_correct:
         try:
             selected_meals: list[str] = get_selected_meals(user_input, meal_names)
             input_is_correct = True
         except InvalidInputError as e:
-            user_input = get_input_from_user(f"{e.message}\nPlease try again:")
+            prompt_user_input_again(e.message)
+            user_input = input()
+            print()
 
     if not selected_meals:
-        print("You didn't choose any meal.")
+        print_you_didnt_chose_any_meal()
         return
 
     print_selected_meals(selected_meals)
