@@ -3,7 +3,7 @@
 
 import re
 
-from food_shopping_list.InvalidInputError import InvalidInputError
+from food_shopping_list.exceptions import InvalidInputError
 
 
 

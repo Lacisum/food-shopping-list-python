@@ -1,7 +1,7 @@
 import unittest
 
 from food_shopping_list.input_parsing import get_selected_meals
-from food_shopping_list.InvalidInputError import InvalidInputError
+from food_shopping_list.exceptions import InvalidInputError
 
 
 

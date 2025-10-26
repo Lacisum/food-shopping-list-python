@@ -20,7 +20,7 @@ def main(argv):
 
     try:
         check_content_correctness(content)
-    except AssertionError as e:
+    except FileFormatError as e:
         print_meals_file_error(file_name, e)
         exit(1)
 

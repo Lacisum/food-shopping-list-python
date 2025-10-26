@@ -2,6 +2,8 @@
 
 import sys
 
+from food_shopping_list.exceptions import FileFormatError
+
 
 
 
@@ -12,7 +14,7 @@ def print_usage() -> None:
 
 
 
-def print_meals_file_error(file_name: str, exception: AssertionError) -> None:
+def print_meals_file_error(file_name: str, exception: FileFormatError) -> None:
     """
     Prints an error that's in the meals file.
 
