@@ -1,15 +1,11 @@
 # Food shopping list
 
 
-## Contents
-
-- [Food shopping list](#food-shopping-list)
-  - [Contents](#contents)
-  - [Presentation](#presentation)
-  - [Configure the meals file](#configure-the-meals-file)
-  - [Requirements](#requirements)
-  - [Run the program](#run-the-program)
-  - [Run the tests](#run-the-tests)
+- [Presentation](#presentation)
+- [Configure the meals file](#configure-the-meals-file)
+- [Requirements](#requirements)
+- [Run the program](#run-the-program)
+- [Run the tests](#run-the-tests)
 
 
 <a name="Presentation"></a>
