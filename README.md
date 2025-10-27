@@ -11,9 +11,7 @@
 <a name="Presentation"></a>
 ## Presentation
 
-Do you know in advance what meals you want to cook this week? Then just feed the program with the names of those meals. You will be given the list of ingredients (with their quantities) you need to buy.  
-  
-For now, the instructions that the program displays are given in french. However, if the meals file is written in english, the meals and the list of needed ingredients will of course be displayed in english.  
+Do you know in advance what meals you want to cook this week? Then just feed the program with the names of those meals. You will be given the list of ingredients (with their quantities) you need to buy.
 
 
 <a name="ConfigureTheMealsFile"></a>
