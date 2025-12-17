@@ -1,6 +1,7 @@
 # This program produces a shopping (food) list for the selected meals
 
 
+import signal
 import sys
 
 from . import *
@@ -10,9 +11,12 @@ from . import *
 
 def main(argv):
 
+    # prevents dirty Python exception message when hitting `Ctrl + C`
+    signal.signal(signal.SIGINT, sigint_handler)
+
     if len(argv) != 2:
         print_usage()
-        exit(1)
+        sys.exit(1)
 
     file_name = argv[1]
 
@@ -22,7 +26,7 @@ def main(argv):
         check_content_correctness(content)
     except FileFormatError as e:
         print_meals_file_error(file_name, e)
-        exit(1)
+        sys.exit(1)
 
     meals_dicts: list = content
 
@@ -57,6 +61,14 @@ def main(argv):
     ingredients_totals = get_ingredients_quantities(selected_meals_dicts)
 
     print_shopping_list(ingredients_totals)
+
+
+
+
+def sigint_handler(*_):
+    """Handler called when SIGINT is received."""
+    print()
+    sys.exit(1)
 
 
 
