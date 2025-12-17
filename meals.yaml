@@ -204,3 +204,12 @@
     huile:
       quantity: 5
       unit: c à s
+
+- meal: pâtes au tofu
+  ingredients:
+    pâtes:
+      quantity: 500
+      unit: g
+    tofu:
+      quantity: 400
+      unit: g
