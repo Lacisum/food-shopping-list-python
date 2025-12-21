@@ -14,7 +14,8 @@ def main(argv):
     # prevents dirty Python exception message when hitting `Ctrl + C`
     signal.signal(signal.SIGINT, sigint_handler)
 
-    frontend_handler: FrontendHandler = FrontendHandler()
+    text_assets: dict[str, str] = TextAssetsLoader('assets/texts.yaml').load()
+    frontend_handler: FrontendHandler = FrontendHandler(text_assets)
 
     if len(argv) != 2:
         frontend_handler.print_usage()
@@ -22,7 +23,7 @@ def main(argv):
 
     file_name = argv[1]
 
-    content: list = read_file(file_name)
+    content: list = read_yaml_file(file_name)
 
     try:
         check_content_correctness(content)

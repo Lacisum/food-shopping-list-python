@@ -1,31 +1,7 @@
 # To parse and check the correctness of the file
 
 
-import sys
-import yaml
-
 from food_shopping_list.exceptions import FileFormatError
-
-
-
-
-def read_file(file_name: str) -> list[dict]:
-    """
-    Reads the file.
-
-    Args:
-        file_name: the name of the file to read
-
-    Returns:
-        The content of the file.
-    """
-    with open(file_name, 'r') as file:
-        try:
-            content: list = yaml.safe_load(file)
-        except Exception as e:
-            print(e)
-            sys.exit(1)
-    return content
 
 
 

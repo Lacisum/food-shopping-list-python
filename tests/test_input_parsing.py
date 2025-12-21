@@ -7,9 +7,10 @@ from food_shopping_list.exceptions import InvalidInputError
 
 class TestInputParsing(unittest.TestCase):
 
+    MOCK_TEXTS = {}
 
     def setUp(self) -> None:
-        self.frontend_handler = FrontendHandler()
+        self.frontend_handler = FrontendHandler(self.MOCK_TEXTS)
         self.meal_names = ['patates sautées', 'salade de patates']
 
 
