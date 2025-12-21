@@ -51,7 +51,7 @@ def main(argv):
 
     ingredients_totals = get_ingredients_quantities(selected_meals_dicts)
 
-    frontend_handler.print_shopping_list(ingredients_totals)
+    frontend_handler.print_ingredients_totals(ingredients_totals)
 
 
 

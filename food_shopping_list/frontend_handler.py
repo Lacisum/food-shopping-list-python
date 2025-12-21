@@ -88,7 +88,7 @@ class FrontendHandler:
 
 
 
-    def print_shopping_list(self, ingredients_totals: dict[str, dict]) -> None:
+    def print_ingredients_totals(self, ingredients_totals: dict[str, dict]) -> None:
         """
         Prints the shopping list.
 
