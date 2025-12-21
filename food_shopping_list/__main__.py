@@ -14,8 +14,10 @@ def main(argv):
     # prevents dirty Python exception message when hitting `Ctrl + C`
     signal.signal(signal.SIGINT, sigint_handler)
 
+    frontend_handler: FrontendHandler = FrontendHandler()
+
     if len(argv) != 2:
-        print_usage()
+        frontend_handler.print_usage()
         sys.exit(1)
 
     file_name = argv[1]
@@ -25,16 +27,16 @@ def main(argv):
     try:
         check_content_correctness(content)
     except FileFormatError as e:
-        print_meals_file_error(file_name, e)
+        frontend_handler.print_meals_file_error(file_name, e)
         sys.exit(1)
 
     meals_dicts: list = content
 
     meal_names: list[str] = [meal_dict['meal'] for meal_dict in meals_dicts]
 
-    print_available_meals(meal_names)
+    frontend_handler.print_available_meals(meal_names)
 
-    prompt_user_input()
+    frontend_handler.prompt_user_input()
     user_input = input()
     print()
     input_is_correct = False
@@ -43,15 +45,15 @@ def main(argv):
             selected_meals: list[str] = get_selected_meals(user_input, meal_names)
             input_is_correct = True
         except InvalidInputError as e:
-            prompt_user_input_again(e.message)
+            frontend_handler.prompt_user_input_again(e.message)
             user_input = input()
             print()
 
     if not selected_meals:
-        print_you_didnt_chose_any_meal()
+        frontend_handler.print_you_didnt_chose_any_meal()
         return
 
-    print_selected_meals(selected_meals)
+    frontend_handler.print_selected_meals(selected_meals)
 
     selected_meals_dicts = list(filter(
         lambda meal_element: meal_element['meal'] in selected_meals,
@@ -60,7 +62,7 @@ def main(argv):
 
     ingredients_totals = get_ingredients_quantities(selected_meals_dicts)
 
-    print_shopping_list(ingredients_totals)
+    frontend_handler.print_shopping_list(ingredients_totals)
 
 
 
