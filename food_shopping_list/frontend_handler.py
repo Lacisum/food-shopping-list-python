@@ -1,13 +1,15 @@
 # For displaying
 
+import re
 import sys
 
-from food_shopping_list.exceptions import FileFormatError
+from food_shopping_list.exceptions import FileFormatError, InvalidInputError
 
 
 
 
 class FrontendHandler:
+    """A class for interfacing with the user."""
 
     def print_usage(self) -> None:
         """Prints the usage of the program."""
@@ -29,7 +31,7 @@ class FrontendHandler:
 
 
 
-    def print_available_meals(self, meal_names: list) -> None:
+    def print_available_meals(self, meal_names: list[str]) -> None:
         """
         Prints the list of available meals.
 
@@ -45,28 +47,26 @@ class FrontendHandler:
 
 
 
-    def prompt_user_input(self) -> None:
-        """Prompts the user to type the numbers of the meals they want to prepare."""
-        print('Enter the numbers of the meals you want to make, separating them with a space:')
+    def get_selected_meals(self, meal_names: list[str]) -> list[str]:
+        """Gets the meals selected by the user.
 
-
-
-
-    def prompt_user_input_again(self, exception_message: str) -> None:
+        Returns:
+            list[str]: the list of meal names the user selected
         """
-        Prompts the user to type the numbers of the meals they want to prepare (again).
-        Assumes that the user has already tried to input something before and that their input was incorrect.
+        user_input: str = self._prompt_user_input('Enter the numbers of the meals you want to make, separating them with a space:')
+        input_is_correct = False
+        while not input_is_correct:
+            try:
+                selected_meals: list[str] = self._get_selected_meals_from_input(user_input, meal_names)
+                input_is_correct = True
+            except InvalidInputError as e:
+                user_input = self._prompt_user_input(f'{e.message}\r\nPlease try again:')
+        return selected_meals
 
-        Args:
-            exception_message (str): the message of the exception that occured during the previous input trial
-        """
-        print(exception_message)
-        print('Please try again:')
 
 
 
-
-    def print_you_didnt_chose_any_meal(self, ) -> None:
+    def print_you_didnt_choose_any_meal(self, ) -> None:
         """Prints a message that tells the user they didn't choose any meal."""
         print("You didn't choose any meal.")
 
@@ -107,6 +107,69 @@ class FrontendHandler:
 
 
 
+    def _get_selected_meals_from_input(self, user_input: str, meal_names: list[str]) -> list[str]:
+        """Parses the provided input for meal numbers and returns the list of corresponding meals.
+
+        Args:
+            input (str): the raw user input
+            meal_names (list[str]): the list of available meals
+
+        Returns:
+            list[str]: the names of the user-selected meals
+
+        Raises:
+            InvalidInputError: if the user input is not an empty string, or is
+                not made of integers separated by spaces, or if the integers are
+                not part of those proposed
+
+        Examples :
+        >>> frontend_handler = FrontendHandler()
+        >>> frontend_handler._get_selected_meals_from_input('1', ['salade de patates', 'patates sautées'])
+        ['salade de patates']
+        >>> frontend_handler._get_selected_meals_from_input('2', ['salade de patates', 'patates sautées'])
+        ['patates sautées']
+        >>> frontend_handler._get_selected_meals_from_input('1 2', ['salade de patates', 'patates sautées'])
+        ['salade de patates', 'patates sautées']
+        >>> frontend_handler._get_selected_meals_from_input('', ['salade de patates', 'patates sautées'])
+        []
+        """
+        if not re.fullmatch(r'( *(\d+) *)*', user_input):
+            raise InvalidInputError('The input must be integers separated by spaces.')
+        the_numbers = re.findall(r'\d+', user_input)
+        if len(the_numbers) == 0:
+            return []
+        # remove duplicates
+        the_numbers = list(set(the_numbers))
+        # convert from strings to ints
+        the_numbers = list(map(lambda n: int(n), the_numbers))
+        # sort
+        the_numbers.sort()
+        # refuse out of bound numbers
+        if the_numbers[0] <= 0 or the_numbers[-1] > len(meal_names):
+            raise InvalidInputError('The numbers must be part of those proposed.')
+        # return the meals names associated to the numbers
+        return [meal_names[n-1] for n in the_numbers]
+
+
+
+
+    def _prompt_user_input(self, message: str) -> str:
+        """Prompts the user to type the numbers of the meals they want to prepare.
+
+        Args:
+            message (str): the message to prompt the user with
+
+        Returns:
+            str: the raw user input
+        """
+        print(message)
+        user_input: str = input()
+        print()
+        return user_input
+
+
+
+
     def _print_shopping_list_line(
             self,
             max_ingr_name_length: int,
@@ -126,3 +189,11 @@ class FrontendHandler:
             quantity['quantity'],
             quantity['unit']
         ))
+
+
+
+
+if __name__ =='__main__':
+    # Run with : python -m food_shopping_list.frontend_handler
+    import doctest
+    doctest.testmod(verbose=True)

@@ -36,21 +36,10 @@ def main(argv):
 
     frontend_handler.print_available_meals(meal_names)
 
-    frontend_handler.prompt_user_input()
-    user_input = input()
-    print()
-    input_is_correct = False
-    while not input_is_correct:
-        try:
-            selected_meals: list[str] = get_selected_meals(user_input, meal_names)
-            input_is_correct = True
-        except InvalidInputError as e:
-            frontend_handler.prompt_user_input_again(e.message)
-            user_input = input()
-            print()
+    selected_meals: list[str] = frontend_handler.get_selected_meals(meal_names)
 
     if not selected_meals:
-        frontend_handler.print_you_didnt_chose_any_meal()
+        frontend_handler.print_you_didnt_choose_any_meal()
         return
 
     frontend_handler.print_selected_meals(selected_meals)
