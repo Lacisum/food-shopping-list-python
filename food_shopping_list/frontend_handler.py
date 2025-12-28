@@ -156,7 +156,7 @@ class FrontendHandler:
         >>> frontend_handler._get_selected_meals_from_input('', ['salade de patates', 'patates sautées'])
         []
         """
-        if not re.fullmatch(r'( *(\d+) *)*', user_input):
+        if not re.fullmatch(r'([\s\t]*(\d+)[\s\t]*)*', user_input):
             raise InvalidInputError('The input must be integers separated by spaces.')
         the_numbers = re.findall(r'\d+', user_input)
         if len(the_numbers) == 0:
