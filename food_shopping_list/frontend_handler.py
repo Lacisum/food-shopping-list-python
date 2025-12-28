@@ -62,8 +62,8 @@ class FrontendHandler:
         """
         print()
         print(self.texts[INTRODUCE_AVAILABLE_MEALS])
-        for i in range(len(meal_names)):
-            print(f"{i+1}. {meal_names[i]}")
+        for i, meal_name in enumerate(meal_names):
+            print(f"{i+1}. {meal_name}")
         print()
 
 
