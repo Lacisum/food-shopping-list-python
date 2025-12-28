@@ -49,4 +49,4 @@ class TextAssetsLoader:
             raise FileFormatError('the root element is not a dictionary')
         for text_key, text in content.items():
             if not isinstance(text, str):
-                raise FileFormatError(f"the value of the key '{text_key}' is not a a string")
+                raise FileFormatError(f"the value of the key '{text_key}' is not a string")
