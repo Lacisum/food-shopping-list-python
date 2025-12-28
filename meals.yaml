@@ -97,7 +97,7 @@
       quantity: 5
       unit: pincée
 
-- meal: rizotto
+- meal: risotto
   ingredients:
     riz:
       quantity: 400
